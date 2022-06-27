@@ -6,3 +6,5 @@ package-lock.json
 node_modules
 node
 target
+.DS_Store
+temp/*

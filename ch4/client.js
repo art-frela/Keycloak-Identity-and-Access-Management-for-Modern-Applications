@@ -23,6 +23,7 @@ function generateAuthenticationRequest() {
     var req = state.discovery['authorization_endpoint'];
 
     var clientId = getInput('input-clientid');
+    var clientSecret = getInput('input-clientsecret');
     var scope = getInput('input-scope');
     var prompt = getInput('input-prompt');
     var maxAge = getInput('input-maxage');
@@ -30,6 +31,7 @@ function generateAuthenticationRequest() {
 
     var authenticationInput = {
         clientId: clientId,
+        clientSecret: clientSecret,
         scope: scope,
         prompt: prompt,
         maxAge: maxAge,
@@ -63,14 +65,17 @@ function generateAuthenticationRequest() {
 function loadTokens() {
     var code = getInput('input-code');
     var clientId = getInput('input-clientid');
+    var clientSecret = getInput('input-clientsecret');
 
     var params = 'grant_type=authorization_code';
     params += '&code=' + code;
     params += '&client_id=' + clientId;
+    params += '&client_secret=' + clientSecret;
     params += '&redirect_uri=' + document.location.href.split('?')[0];
 
     var req = new XMLHttpRequest();
     req.onreadystatechange = function() {
+        console.log(req.responseText);
         if (req.readyState === 4) {
             var response = JSON.parse(req.responseText);
             setOutput('output-response', req.responseText);

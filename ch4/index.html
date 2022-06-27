@@ -2,13 +2,15 @@
 <html>
 <head>
     <title>OpenID Connect Playground</title>
-    <script type="text/javascript" src="KC_URL/js/keycloak.js"></script>
+    <script type="text/javascript" src="KC_URL/auth/js/keycloak.js"></script>
     <script type="text/javascript" src="client.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body onload="init()">
 
 <h1>OpenID Connect Playground</h1>
+
+<!-- 64:D1:54:2D:34:23 -->
 
 <button onclick="step('discovery')">1 - Discovery</button>
 <button onclick="step('authentication')">2 - Authentication</button>
@@ -36,6 +38,7 @@
     <h2>Authentication</h2>
     <p>
         <label>client_id</label><input id="input-clientid" value="oidc-playground"><br/>
+        <label>client_secret</label><input id="input-clientsecret" value="secret"><br/>
         <label>scope</label><input id="input-scope" value="openid"><br/>
         <label>prompt</label><input id="input-prompt" value=""><br/>
         <label>max_age</label><input id="input-maxage" value=""><br/>
